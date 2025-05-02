@@ -258,7 +258,7 @@ def QubitSpectrosocpy():
             declare_gen_ch(self, cfg, cfg['qubit_ch'], usage='qubit', suffix='_ge')
             # initialize qubit pulse
             declare_pulse(self, cfg, cfg['qubit_ch'], usage='qubit', 
-                        pulse_style='const', pulse_name='qubit_pulse', suffix='_ge')
+                        pulse_style='gauss', pulse_name='qubit_pulse', suffix='_ge')
 
         def _body(self, cfg):
             self.pulse(ch=self.cfg["qubit_ch"], name="qubit_pulse", t=0)  #play probe pulse
@@ -465,7 +465,7 @@ def drive_DAC(pt, index):
     dac_old = digit_to_curr(int(dacs[ii][0].get_voltage(dacs[ii][1])[:-2]))
     print('old reading = ', dac_old)
     dacs[ii][0].ramp(dacs[ii][1], pt[ii+1], dac_rate)
-    time.sleep(1.5 * abs(dac_old - pt[ii+1]) / dac_rate + 5)
+    time.sleep(1.5 * abs(dac_old - pt[ii+1]) / dac_rate)
     time.sleep(5.0)
     dacs[ii][0].get_voltage(dacs[ii][1])
     dacs[ii][0].get_voltage(dacs[ii][1])
@@ -497,7 +497,7 @@ TRM = array([[ 1.        , -0.11397061, -0.2587036 , -0.28050569, -0.1660616 ,
 # target = 2 # target flux in mA
 # qubitInd = 4 # qubit index
 # pt = [dc coil, f0, f1, f2, f3, f4, f5, f6, f7]
-pt_target = [1.6, 0, 0, 0, 0, 0, 0, 0, 0]
+pt_target = [1.6, 0, -0.5, 0, 0, 0, 1.0, 0.7, 0]
 # pt_target[qubitInd+1] = target
 print('flux target =', pt_target)
 pt = np.dot(TRM,pt_target[1:])
@@ -511,10 +511,10 @@ print('\n\n')
 # drive_Yoko_and_DACs([0]*9) # zero all the dacs
 
 all_qubit_freqs = []
-num_qubits = 8
-res_spec = False
-for qubit in range(num_qubits):
-    QUBIT_INDEX = qubit
+num_qubits = 1
+res_spec = True
+for qubit in range(1):
+    QUBIT_INDEX = qubit+6
     # start_time = time.time()
     with open('system_config.json', 'r') as f:
         config = json.load(f)
