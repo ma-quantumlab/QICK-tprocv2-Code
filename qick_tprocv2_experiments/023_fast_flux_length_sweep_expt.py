@@ -474,7 +474,6 @@ awg_program.code = """
     const wait_samples = round(wait_length*sequencer_clock);
     const pulse_samples = round(pulse_length*sample_clock);
 
-    const N = pulse_samples;
     const amp = 0.4;
 
     const tot_reps = 100*5*200; // rfsoc expt reps
@@ -484,7 +483,7 @@ awg_program.code = """
 
     cvar i;
     for (i = 0; i < num_steps; i = i+1) {
-        cvar samps = N + step_samples*i;
+        cvar samps = pulse_samples + step_samples*i;
         wave w_rect = amp*rect(samps, 1);
         var rep = 0;
         for (rep = 0; rep < tot_reps; rep = rep+1) {

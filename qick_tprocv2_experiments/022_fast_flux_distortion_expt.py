@@ -75,7 +75,7 @@ def fast_flux_qubit_spec(q_time, ff_length):
                         pulse_style='gauss', pulse_name='qubit_pulse', suffix='_ge')
 
         def _body(self, cfg):
-            t_offset = ff_length + 1.5+0.02 # time offset for the readout pulse (fixed)
+            t_offset = ff_length + 1.5+0.02 # (ro delay, trig delay) time offset for the readout pulse (fixed)
 
             if q_time < 0:
                 # if non-MUX then send readout configurations - useful when freq sweeping
