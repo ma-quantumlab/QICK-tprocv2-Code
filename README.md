@@ -70,6 +70,7 @@ Current Notes / Todos / Bugs
 - The experiments all contain a ~0.01 us padding beteween all pulses and readout. This is due to the mismatch between the different clockcycles. Overall, this issue will never be fixed due to the intrinsic difference between the fast_gen channels and the t-processer. However, when using the interpolated channel this is not an issue since the clocks are matched. The padding was added to all experiments just in case, and is especially important when sweeping the lengths of pulses using the fast_gen channels.
 - The *qubit_char_funcs.py* file needs to be updated and utilized when wanting to create scans of parameters in more complicated experiments.
 - The current experiments using the HDAWG are hardcoded. This instrument needs to be integrated into the configuration files somehow.
+- The HDAWG setup is also a work in progress right now. The main focus is inputting custom pulses as a table in the ZI python API.
 
 ---
 
