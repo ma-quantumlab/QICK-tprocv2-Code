@@ -1,3 +1,11 @@
+"""
+fitting - fitting functions for rabi experiments that are used when the qualang_tools package is not
+fitting properly. This is a temporary solution until the qualang_tools package is fixed.
+
+Author: Qihao
+Date: 2024 (estimated)
+"""
+
 # ----- Imports ----- #
 import matplotlib.pyplot as plt
 import numpy as np

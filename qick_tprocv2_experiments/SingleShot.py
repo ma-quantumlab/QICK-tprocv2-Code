@@ -1,3 +1,18 @@
+"""
+SingleShot - perform single shot measurements for g-e calibration
+
+This experiment is designed to perform single shot measurements. 
+
+Make sure to set the 'SS_ONLY' variable to 'True' in the configuration file to run this experiment alone.
+
+MUX and non-MUX versions are setup and work the same for readout. The only difference
+is in the data processing. The MUX version uses the QUBIT_INDEX to index the
+data, while the non-MUX version does not. TODO: MUX version data processing.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 folder = os.getcwd()
 if 'qick_tprocv2_experiments' not in folder:
