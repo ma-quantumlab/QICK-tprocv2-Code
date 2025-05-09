@@ -1,3 +1,6 @@
+The goal is to make something similar to this which was done for the tprocv1 version of the firmware:
+---
+
 A high-level overview of the QICK software capabilities
 =================================================
 
