@@ -1,3 +1,20 @@
+"""
+020_box_mode_sweep - perform a ramsey experiment for various LO frequencies and power levels
+
+MUX and non-MUX versions are setup and work the same for readout. The only difference
+is in the data processing. The MUX version uses the QUBIT_INDEX to index the
+data, while the non-MUX version does not. TODO: MUX version data processing.
+
+Live plotting is setup.
+
+This experiment connects to the signal core using Pyro5. Make sure to run the signal core server
+before running this experiment.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
+
 # reomote control digital attenuator
 import Pyro5.api
 signal_core_01 = Pyro5.api.Proxy("PYRONAME:signal_core_zcu216")    # use name server object lookup uri shortcut

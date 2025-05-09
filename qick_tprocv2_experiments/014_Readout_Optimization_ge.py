@@ -1,3 +1,21 @@
+"""
+014_Readout_Optimization_ge - optimize readout frequency and gain for g-e transition
+
+This experiment is designed to optimize the readout frequency and gain for the g-e transition.
+Here we perform single shot measurements for different readout frequencies and gains by doing a
+2D sweep.
+
+MUX and non-MUX versions are setup and work the same for readout. The only difference
+is in the data processing. The MUX version uses the QUBIT_INDEX to index the
+data, while the non-MUX version does not. TODO: MUX version data processing.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
+import os
+os.chdir(os.getcwd() + '/qick_tprocv2_experiments')
+
 from qick import *
 from qick.pyro import make_proxy
 

@@ -1,3 +1,27 @@
+"""
+004_time_rabi_ge - Time Rabi Experiment for ge state
+
+This experiment is used to perform time rabi experiment using a square pulse
+for a single qubit. The current experiment uses a for loop to sweep over the
+length of the pulse. This is because the trpoc and generator clock are 
+different, the timing of the pulse relative to length of pulse is not consistent.
+Further development is needed to use the QickParam object to define the parameters
+of the experiment.
+
+We also have the option to perform single shot measurements for g-e calibration
+after the experiment. This is done by setting the SS variable to True in the 
+system_config.json file. Your pi pulse should be calibrated before running SS.
+
+MUX and non-MUX versions are setup and work the same for readout. The only difference
+is in the data processing. The MUX version uses the QUBIT_INDEX to index the
+data, while the non-MUX version does not.
+
+Live plotting is setup.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 folder = os.getcwd()
 os.chdir(folder + '/qick_tprocv2_experiments')

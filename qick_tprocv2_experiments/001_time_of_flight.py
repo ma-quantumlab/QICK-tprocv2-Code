@@ -1,3 +1,26 @@
+"""
+001_time_of_flight - Loopback experiment with time of flight pulse
+
+This experiment is used to calibrate the time of flight for pulses
+in future experiments. The "trig_time" variable in the system_config.json
+should be set to 0 during this experiment. After running the experiment,
+the "trig_time" variable should be set to the time of flight value obtained
+from this experiment.
+
+This experiment is setup for the MUX case, but it can be used for non-MUX
+case as well. The time of flight for each of these channels is different,
+so the experiment should be run for each channel separately.
+
+In this case, the frequency and gain of the pulse are hard coded above the
+experiment since we dont care for them in this case. However, it is important
+that your filter chain does not completely filter out the pulse.
+
+Live plotting is not setup for this experiment since it is usually quick.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 folder = os.getcwd()
 os.chdir(folder + '/qick_tprocv2_experiments')
@@ -53,7 +76,6 @@ print(config)
 ##################
 # Define Program #
 ##################
-
 class LoopbackProgram(AveragerProgramV2):
     def _initialize(self, cfg):
         # initialize the readout channels and pulses for DAC and ADC

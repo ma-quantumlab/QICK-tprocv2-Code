@@ -1,3 +1,15 @@
+"""
+qick_setup_funcs - contains functions to initialize the experiment configurations and declare channels and pulses.
+
+This file provides a layer of abstraction to the experiment code so that we can easily change the expeirments without
+having to deal with the details of the hardware configurations. This is useful for MUX and non-MUX experiments.
+
+Please see the description of each function for more details.
+
+
+Author: Santi
+Date: 2025-05-09
+"""
 import numpy as np
 import json
 

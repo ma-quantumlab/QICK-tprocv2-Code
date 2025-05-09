@@ -1,3 +1,25 @@
+"""
+019_collective_decay - perform avoided crossing experiment between two qubits and measure T1 time
+
+This experiment scans over different DAC values for one qubit (while keeping the other fixed)
+and performs resonator spectroscopy and qubit spectrosocpy for two qubits at each value. Additionally,
+it measures T1 time for each qubit at each value.
+
+ISSUE: The fiting may not work properly for qubit spectroscopy when the qubits are near each other in
+frequency. It is better to just pick a single spot for each of the qubits (at the crossing) and do the
+T1 measurement there for each peak.
+
+This experiment is not yet setup for MUX case. TODO: add MUX case.
+
+Live plotting is setup.
+
+This experiment connects to the YOKO and DACs to set the DAC values. The IP addresses are
+defined below in the code, and the DAC ports are configured for the external fridge wiring.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 folder = os.getcwd()
 os.chdir(folder + '/qick_tprocv2_experiments')
@@ -672,123 +694,123 @@ qubit2_t1_array = []
 # print(res_freqs)
 # print(qubit_freqs)
 
-# for i, pt in enumerate(flux_array):
-#     start_time = time.time()
+for i, pt in enumerate(flux_array):
+    start_time = time.time()
     
-#     print('With crosstalk correction!')
-#     print('flux actual =', pt)
-#     print('\n\n')
+    print('With crosstalk correction!')
+    print('flux actual =', pt)
+    print('\n\n')
 
-#     with open('system_config.json', 'r') as f:
-#         config = json.load(f)
+    with open('system_config.json', 'r') as f:
+        config = json.load(f)
 
-#     # adjust experiment configuration values
-#     config['config']['dac'] = pt
+    # adjust experiment configuration values
+    config['config']['dac'] = pt
 
-#     with open('system_config.json', 'w') as f:
-#         json.dump(config, f, indent=3)
+    with open('system_config.json', 'w') as f:
+        json.dump(config, f, indent=3)
 
-#     # now drive the YOKO and DACs
-#     # drive_Yoko_and_DACs(pt)
+    # now drive the YOKO and DACs
+    # drive_Yoko_and_DACs(pt)
 
-#     # do the experiments for qubit 1 then qubit 2
-#     for qubit in range(2):
-#         # qubit = 1
-#         QUBIT_INDEX = qubit+1
-#         with open('system_config.json', 'r') as f:
-#             config = json.load(f)
+    # do the experiments for qubit 1 then qubit 2
+    for qubit in range(2):
+        # qubit = 1
+        QUBIT_INDEX = qubit+1
+        with open('system_config.json', 'r') as f:
+            config = json.load(f)
 
-#         # adjust experiment configuration values
-#         config['config']['qubit_index'] = QUBIT_INDEX
+        # adjust experiment configuration values
+        config['config']['qubit_index'] = QUBIT_INDEX
 
-#         with open('system_config.json', 'w') as f:
-#             json.dump(config, f, indent=3)
+        with open('system_config.json', 'w') as f:
+            json.dump(config, f, indent=3)
 
-#         expt_name = 'res_spec_ge'
-#         with open('system_config.json', 'r') as f:
-#             config = json.load(f)
+        expt_name = 'res_spec_ge'
+        with open('system_config.json', 'r') as f:
+            config = json.load(f)
 
-#         # adjust experiment configuration values
-#         config['expt_cfg'][expt_name]['start'][QUBIT_INDEX] = res_start[qubit][i]
-#         config['expt_cfg'][expt_name]['stop'][QUBIT_INDEX] = res_stop[qubit][i]
+        # adjust experiment configuration values
+        config['expt_cfg'][expt_name]['start'][QUBIT_INDEX] = res_start[qubit][i]
+        config['expt_cfg'][expt_name]['stop'][QUBIT_INDEX] = res_stop[qubit][i]
 
-#         with open('system_config.json', 'w') as f:
-#             json.dump(config, f, indent=3)
+        with open('system_config.json', 'w') as f:
+            json.dump(config, f, indent=3)
 
-#         # run resonator spectroscopy experiment
-#         print('Starting Resonator Spectroscopy')
-#         res_freq = ResonatorSpectrosocpy()
-#         if qubit == 0:
-#             res1_freq_array.append(res_freq) # save res freq value
-#         else:
-#             res2_freq_array.append(res_freq) # save res freq value
+        # run resonator spectroscopy experiment
+        print('Starting Resonator Spectroscopy')
+        res_freq = ResonatorSpectrosocpy()
+        if qubit == 0:
+            res1_freq_array.append(res_freq) # save res freq value
+        else:
+            res2_freq_array.append(res_freq) # save res freq value
 
-#         print('Resonator frequency =', res_freq, 'MHz')
+        print('Resonator frequency =', res_freq, 'MHz')
 
-#         expt_name = 'qubit_spec_ge'
-#         with open('system_config.json', 'r') as f:
-#             config = json.load(f)
+        expt_name = 'qubit_spec_ge'
+        with open('system_config.json', 'r') as f:
+            config = json.load(f)
 
-#         # adjust experiment configuration values
-#         config['config']['readout_cfg']['res_freq_ge'][QUBIT_INDEX] = res_freq
-#         config['expt_cfg'][expt_name]['start'][QUBIT_INDEX] = qubit_start[qubit][i]
-#         config['expt_cfg'][expt_name]['stop'][QUBIT_INDEX] = qubit_stop[qubit][i]
+        # adjust experiment configuration values
+        config['config']['readout_cfg']['res_freq_ge'][QUBIT_INDEX] = res_freq
+        config['expt_cfg'][expt_name]['start'][QUBIT_INDEX] = qubit_start[qubit][i]
+        config['expt_cfg'][expt_name]['stop'][QUBIT_INDEX] = qubit_stop[qubit][i]
 
-#         with open('system_config.json', 'w') as f:
-#             json.dump(config, f, indent=3)
+        with open('system_config.json', 'w') as f:
+            json.dump(config, f, indent=3)
             
-#         # run qubit spectroscopy experiment
-#         print('Starting Qubit Spectroscopy')
-#         qubit_freq = QubitSpectrosocpy()
-#         if qubit == 0:
-#             qubit1_freq_array.append(qubit_freq) # save res freq value
-#         else:
-#             qubit2_freq_array.append(qubit_freq) # save res freq value
+        # run qubit spectroscopy experiment
+        print('Starting Qubit Spectroscopy')
+        qubit_freq = QubitSpectrosocpy()
+        if qubit == 0:
+            qubit1_freq_array.append(qubit_freq) # save res freq value
+        else:
+            qubit2_freq_array.append(qubit_freq) # save res freq value
         
-#         print('Qubit frequency =', qubit_freq, 'MHz')
+        print('Qubit frequency =', qubit_freq, 'MHz')
 
-#         # expt_name = 'T1_ge'
-#         # with open('system_config.json', 'r') as f:
-#         #     config = json.load(f)
+        expt_name = 'T1_ge'
+        with open('system_config.json', 'r') as f:
+            config = json.load(f)
 
-#         # # adjust experiment configuration values
-#         # config['config']['readout_cfg']['res_freq_ge'][QUBIT_INDEX] = 6170.350609588622 ####res_freq
-#         # if qubit == 0:
-#         #     config['config']['qubit_cfg']['qubit_freq_ge'][QUBIT_INDEX] = 4182.745759963988
-#         # else:
-#         #     config['config']['qubit_cfg']['qubit_freq_ge'][QUBIT_INDEX] = 4202
+        # adjust experiment configuration values
+        config['config']['readout_cfg']['res_freq_ge'][QUBIT_INDEX] = 6170.350609588622 ####res_freq
+        if qubit == 0:
+            config['config']['qubit_cfg']['qubit_freq_ge'][QUBIT_INDEX] = 4182.745759963988
+        else:
+            config['config']['qubit_cfg']['qubit_freq_ge'][QUBIT_INDEX] = 4202
 
-#         # with open('system_config.json', 'w') as f:
-#         #     json.dump(config, f, indent=3)
+        with open('system_config.json', 'w') as f:
+            json.dump(config, f, indent=3)
 
-#         # # run t1 experiment
-#         # print('Starting T1')
-#         # t1_value = T1()
-#         # if qubit == 0:
-#         #     qubit1_t1_array.append(t1_value) # save res freq value
-#         # else:
-#         #     qubit2_t1_array.append(t1_value) # save res freq value
+        # run t1 experiment
+        print('Starting T1')
+        t1_value = T1()
+        if qubit == 0:
+            qubit1_t1_array.append(t1_value) # save res freq value
+        else:
+            qubit2_t1_array.append(t1_value) # save res freq value
         
-#         # print('T1 =', t1_value, 'us')
+        print('T1 =', t1_value, 'us')
 
-#     end_time = time.time()
+    end_time = time.time()
 
-#     print('Time taken for iteration =', end_time - start_time)
+    print('Time taken for iteration =', end_time - start_time)
 
-# # save all data info
+# save all data info
 
-# data_path = "M:/malab/_Data/20250130 - Santi - RFSoC tprocv2 - LL8qubit J meas Q1 Q2/data/collective_decay"
-# lookup_file = 'lookup_file'
-# with SlabFile(data_path + '\\' + lookup_file, 'a') as f:
-#     # 'a': read/write/create
+data_path = "M:/malab/_Data/20250130 - Santi - RFSoC tprocv2 - LL8qubit J meas Q1 Q2/data/collective_decay"
+lookup_file = 'lookup_file'
+with SlabFile(data_path + '\\' + lookup_file, 'a') as f:
+    # 'a': read/write/create
 
-#     # - Adds data to the file - #
-#     f.append('res1_freqs', res1_freq_array)
-#     f.append('res2_freqs', res2_freq_array)
-#     f.append('qubit1_freqs', qubit1_freq_array)
-#     f.append('qubit2_freqs', qubit2_freq_array)
-#     f.append('qubit1_t1', qubit1_t1_array)
-#     f.append('qubit2_t1', qubit2_t1_array)
-#     f.append('flux_array', flux_array)
+    # - Adds data to the file - #
+    f.append('res1_freqs', res1_freq_array)
+    f.append('res2_freqs', res2_freq_array)
+    f.append('qubit1_freqs', qubit1_freq_array)
+    f.append('qubit2_freqs', qubit2_freq_array)
+    f.append('qubit1_t1', qubit1_t1_array)
+    f.append('qubit2_t1', qubit2_t1_array)
+    f.append('flux_array', flux_array)
 
 drive_Yoko_and_DACs([0] * 9) # zero all the dacs

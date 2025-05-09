@@ -1,3 +1,13 @@
+"""
+build_task - adds the configuration of the experiment to the expt_cfg dictionary
+
+This file is called in each experiment code to build the task and properly add the configuration
+of the experiment to the expt_cfg dictionary. This takes into account the qubit index and the
+experiment name.
+
+Author: Santi
+Date: 2025-05-09
+"""
 from qick import *
 import numpy as np
 import time
@@ -27,8 +37,6 @@ def add_single_qubit_experiment(expt_cfg, expt_name, QubitIndex):
         except TypeError as e:
             stop = expt_cfg["stop"]
 
-        
-    
         # np.arrange only support "start" > "stop"
         if start >= stop:
             print("Warning: Start value is smaller than Stop value, and it will cause 'expts' = 0.")

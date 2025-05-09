@@ -1,3 +1,31 @@
+"""
+013_qubit_temp - measure the temperature of a qubit by performing two length rabi experiments
+
+This experiment is used to perform two time rabi experiments for a single qubit using
+a constant ef pulse. The first experiment does not apply an initial ge pi pulse, while the
+second experiment does. Idea: https://arxiv.org/pdf/1412.2772
+The current experiment uses a for loop to sweep over the length of the pulse.
+This is because the trpoc and generator clock are  different, the timing of the
+pulse relative to length of pulse is not consistent. Further development is needed
+to use the QickParam object to define the parameters of the experiment.
+
+We also have the option to perform single shot measurements for g-e-f calibration
+after the experiment. This is done by setting the SS variable to True in the 
+system_config.json file. Your pi pulse should be calibrated before running SS.
+
+MUX and non-MUX versions are setup and work the same for readout. The only difference
+is in the data processing. The MUX version uses the QUBIT_INDEX to index the
+data, while the non-MUX version does not. TODO: MUX version data processing.
+
+Live plotting is setup.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
+import os
+os.chdir(os.getcwd() + '/qick_tprocv2_experiments')
+
 from qick import *
 from qick.pyro import make_proxy
 

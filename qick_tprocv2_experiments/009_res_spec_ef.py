@@ -1,3 +1,20 @@
+"""
+009_res_spec_ef - Resonator Spectroscopy Experiment for ef state
+
+This experiment is used to perform resonator spectroscopy for the ef state.
+The non-MUX version uses a QickParam object to define the parameters of the
+experiment. This experiment is NOT setup for the MUX case yet. The MUX version
+would use a for loop to define the parameters of the experiment similar to ge version.
+
+Live plotting is setup.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
+import os
+os.chdir(os.getcwd() + '/qick_tprocv2_experiments')
+
 from qick import *
 from qick.pyro import make_proxy
 

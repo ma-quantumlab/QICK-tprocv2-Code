@@ -1,4 +1,12 @@
-# This file is called in each experiment code to connect to the rfsoc
+"""
+rfsoc_connect
+
+This file is called in each experiment code to connect to the rfsoc
+and print the configuraitons.
+
+Author: Santi
+Date: 2025-05-09
+"""
 
 from qick.pyro import make_proxy
 import json

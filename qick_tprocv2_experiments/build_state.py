@@ -1,3 +1,13 @@
+"""
+build_state - adds the configuration of the pulses and readout to the expt_cfg dictionary
+
+This file is called in each experiment code to build the state and properly add the configuration
+for each qubit to the dictionary. This takes into account the qubit index.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 from qick import *
 import copy
 import json

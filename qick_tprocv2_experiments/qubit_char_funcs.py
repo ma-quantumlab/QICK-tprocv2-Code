@@ -1,3 +1,15 @@
+"""
+qubit_char_funcs - contains the functions for single qubit characterization experiments.
+
+TODO: Setup all of the more complicated experimeents to call from this file.
+
+TODO: Some of the functions in this file may be outdated, need to check with the latest
+version of the code in the other files (001 - 008).
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 # ----- Imports ----- #
 from qick import *
 from qick.pyro import make_proxy

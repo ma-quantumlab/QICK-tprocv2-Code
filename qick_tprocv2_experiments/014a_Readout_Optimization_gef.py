@@ -1,3 +1,22 @@
+"""
+015_Readout_Optimization_gef - optimize readout frequency and gain for g-e-f transitions
+
+This experiment is designed to optimize the readout frequency and gain for the g-e-f transition.
+Here we perform single shot measurements for different readout frequencies and gains by doing a
+2D sweep. The only difference between this and the g-e experiment is the addition of the e-f single
+shot experiment added in.
+
+MUX and non-MUX versions are setup and work the same for readout. The only difference
+is in the data processing. The MUX version uses the QUBIT_INDEX to index the
+data, while the non-MUX version does not. TODO: MUX version data processing.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
+import os
+os.chdir(os.getcwd() + '/qick_tprocv2_experiments')
+
 from qick import *
 from qick.pyro import make_proxy
 

@@ -1,3 +1,26 @@
+"""
+011_power_rabi_ef - Power Rabi Experiment for ef state
+
+This experiment is used to perform power rabi experiment using a Gaussian pulse
+for a single qubit. The gain sweep is done using a QickParam object.
+
+We also have the option to perform single shot measurements for g-e-f calibration
+after the experiment. This is done by setting the SS variable to True in the 
+system_config.json file. Your pi pulse should be calibrated before running SS.
+
+MUX and non-MUX versions are setup and work the same for readout. The only difference
+is in the data processing. The MUX version uses the QUBIT_INDEX to index the
+data, while the non-MUX version does not. TODO: MUX version data processing.
+
+Live plotting is setup.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
+import os
+os.chdir(os.getcwd() + '/qick_tprocv2_experiments')
+
 from qick import *
 from qick.pyro import make_proxy
 
