@@ -1,3 +1,17 @@
+"""
+002_res_spec_ge - Resonator Spectroscopy Experiment for ge state
+
+This experiment is used to perform resonator spectroscopy. The non-MUX
+version uses a QickParam object to define the parameters of the experiment.
+This experiment is setup for the MUX case as well. The MUX version uses a
+for loop to define the parameters of the experiment.
+
+Live plotting is setup for the non-MUX case, but it is not setup for the MUX case.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 os.chdir(os.getcwd() + '/qick_tprocv2_experiments')
 

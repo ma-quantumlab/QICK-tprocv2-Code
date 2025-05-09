@@ -1,3 +1,20 @@
+"""
+018_avoided_crossing_expt - perform avoided crossing experiment between two qubits
+
+This experiment scans over different DAC values for one qubit (while keeping the other fixed)
+and performs resonator spectroscopy and qubit spectrosocpy for two qubits at each value.
+
+This experiment is not yet setup for MUX case. TODO: add MUX case.
+
+Live plotting is setup.
+
+This experiment connects to the YOKO and DACs to set the DAC values. The IP addresses are
+defined below in the code, and the DAC ports are configured for the external fridge wiring.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 folder = os.getcwd()
 os.chdir(folder + '/qick_tprocv2_experiments')

@@ -1,3 +1,27 @@
+"""
+016_mux_t1_scan - performs T1 measurement using MUX readout over time.
+
+This experiment continuously measures T1 experiments for all qubits using MUX readout.
+In this case a pre-calibrated pi-pulse is applied to each qubit sequentially, and the
+readout is performed using the MUX readout channel. The timing parameter sweep is done
+using a QickParam object.
+
+This code is still a work in progress, and is not robust yet. (see todo below)
+
+TODO: There is an issues where the readout amplitude for some qubits can be very low or zero.
+This shows a flat line in the T1 data for a qubit, and is not accurate. This only occurs using
+MUX readout and only for some qubits. Even when changing the order of the qubit pi pulses, the
+same issue shows up for the same qubit.
+
+Live plotting is setup.
+
+This experiment connects to the YOKO and DACs to set the DAC values. The IP addresses are
+defined below in the code, and the DAC ports are configured for the external fridge wiring.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 folder = os.getcwd()
 os.chdir(folder + '/qick_tprocv2_experiments')

@@ -1,8 +1,21 @@
 """
+022_fast_flux_distortion_expt - sweep over qubit pulse timing compared to the fast flux pulse.
+
 In this experiment I trigger the HDAWG using RFSoC external trigger.
 The HDAWG is set to output a square pulse on CH1, and the trigger input is on CH1.
 The qubit drive pulse is swept in frequency and timing while the flux and readout pulses are fixed.
+
+TODO: This code is a work in progress and many values are still hardcoded below.
+
+Live plotting is setup.
+
+This experiment connects to the Zurich Instruments HDAWG. The IP addresses are
+defined below in the code.
+
+Author: Santi
+Date: 2025-05-09
 """
+
 import os
 os.chdir(os.getcwd() + '/qick_tprocv2_experiments')
 print(os.getcwd())

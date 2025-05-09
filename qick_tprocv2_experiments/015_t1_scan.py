@@ -1,3 +1,28 @@
+"""
+015_t1_scan - Loops over different DAC values and performs T1 measurement for each value.
+
+This experiment scans over different DAC values and performs T1 measurement for each value.
+There is an option to perform this experiment for a single or multiple qubits by changing the
+num_qubits variable in the code below. In addition to T1, it also has the option to do resonator
+spectroscopy, qubit spectroscopy, and power rabi to calibrate the pi-pulse at each flux point.
+These last three are not required and one can use a saturation pulse instead for the T1 measurement.
+
+There is also the option to not drive any of the DACs and just perform the T1 measurement over time for
+some number of iterations.
+
+Many of the parameters of the experiment are manually input below. The general expeirment parameters
+for res_spec, qubit_spec, power_rabi, and T1 are defined in the config file and run the same as
+previous experiments.
+
+Live plotting is setup for all of these experiments.
+
+This experiment connects to the YOKO and DACs to set the DAC values. The IP addresses are
+defined below in the code, and the DAC ports are configured for the external fridge wiring.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 folder = os.getcwd()
 os.chdir(folder + '/qick_tprocv2_experiments')

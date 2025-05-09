@@ -1,3 +1,22 @@
+"""
+017_res_spec_scan - Loops over different DAC values and performs resonator spectrosocpy for each value.
+
+This experiment scans over different DAC values and performs resonator spectroscopy for each value.
+There is an option to perform this experiment for a single or multiple qubits by changing the
+num_qubits variable in the code below. This experiment is usually useful to check if the flux
+lines are causing any sort of heating in the qubits.
+
+This experiment is not yet setup for MUX case. TODO: add MUX case.
+
+Live plotting is setup.
+
+This experiment connects to the YOKO and DACs to set the DAC values. The IP addresses are
+defined below in the code, and the DAC ports are configured for the external fridge wiring.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 os.chdir(os.getcwd() + '/qick_tprocv2_experiments')
 

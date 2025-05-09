@@ -1,3 +1,21 @@
+"""
+021_qubit_freq_cal - quickest way to check resonator and qubit frequencies for a single DAC value.
+
+This experiment can be performed for multiple qubits sequentially by changing the num_qubits variable below.
+Here the resonator frequency is found by looking for the minimum amplitude in the resonator spectroscopy
+experiment. The qubit frequency is found by looking for the maximum amplitude in the qubit spectroscopy experiment.
+
+The parameters for the DACs and YOKO are set in the code below.
+
+Live plotting is setup for all of these experiments.
+
+This experiment connects to the YOKO and DACs to set the DAC values. The IP addresses are
+defined below in the code, and the DAC ports are configured for the external fridge wiring.
+
+Author: Santi
+Date: 2025-05-09
+"""
+
 import os
 folder = os.getcwd()
 os.chdir(folder + '/qick_tprocv2_experiments')
@@ -513,7 +531,7 @@ print('\n\n')
 all_qubit_freqs = []
 num_qubits = 1
 res_spec = True
-for qubit in range(1):
+for qubit in range(num_qubits):
     QUBIT_INDEX = qubit+6
     # start_time = time.time()
     with open('system_config.json', 'r') as f:
