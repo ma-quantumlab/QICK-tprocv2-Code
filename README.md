@@ -71,6 +71,8 @@ Current Notes / Todos / Bugs
 - The *qubit_char_funcs.py* file needs to be updated and utilized when wanting to create scans of parameters in more complicated experiments.
 - The current experiments using the HDAWG are hardcoded. This instrument needs to be integrated into the configuration files somehow.
 - The HDAWG setup is also a work in progress right now. The main focus is inputting custom pulses as a table in the ZI python API.
+- The external trigger to the HDAWG has an impedance mismatch issue whcih is described here: https://discord.com/channels/764231928676089909/1336515288770023466/1336518711347122277 and https://github.com/openquantumhardware/qick/issues/159
+  - Currently it is setup with a 50 OHm terminator in series and this seems to work ok to stabilize the signal, however the amplitude is not 3.3V. No issue with triggering has been seen yet with the current setup.
 
 ---
 
