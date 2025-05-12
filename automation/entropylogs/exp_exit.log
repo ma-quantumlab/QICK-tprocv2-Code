@@ -1,0 +1,10 @@
+No module named 'visa'
+Warning VISA library import failed
+Warning serial library import failed.
+Could not load InstrumentManagerWindow
+========================================
+|- Entropy lab context
+|   Node identity:   #exp_exit
+|   Host:            COS-6MA-3548
+|   Playbook:        localhost,6379,0
+========================================
