@@ -1,3 +1,12 @@
+For initial tProcessorv2 demos, see:
+
+- IEEE repo with new "standard" 216 firmware (demo notebook in "demos_firmware", firmware in "fw/2024-09-13_216_tprocv2r21_standard"): https://github.com/openquantumhardware/QCE2024
+- tProc v2 demos with links to smaller demo firmwares: https://github.com/meeg/qick_demos_sho/tree/main/tprocv2
+- Shared repo with Sara Sussman: https://github.com/sarafs1926/tprocv2_demos
+
+The goal is to make something similar to demos which were done for the tprocv1 version of the firmware below:
+---
+
 A high-level overview of the QICK software capabilities
 =================================================
 
