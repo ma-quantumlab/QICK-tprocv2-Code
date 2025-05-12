@@ -1,5 +1,5 @@
 MaLab QICK code using tprocV2 firmware
----
+====
 
 Current firmware files being used are located here:
 - https://s3df.slac.stanford.edu/people/meeg/qick/tprocv2/2024-09-28_216_tprocv2r21_standard/
@@ -67,9 +67,12 @@ Current Notes / Todos / Bugs
 - Currently, changing between a constant or Gaussian qubit pulse needs to be done manually by going into the experiment script you are running and setting 'const' to 'gauss' in the pulse parameters.
 - All of the e-f experiments have not been updated to include the data processing for MUX readout option (see lines 108-121 and 162-171 of *003_qubit_spec.py* for example)
 - The T1 mux scan does not work properly. There is an issues where the readout amplitude for some qubits can be very low or zero. This shows a flat line in the T1 data for a qubit, and is not accurate. This only occurs using MUX readout and only for some qubits. Even when changing the order of the qubit pi pulses, the same issue shows up for the same qubit.
-- The experiments all contain a ~0.01 us padding beteween all pulses and readout. This is due to the mismatch between the different clockcycles. Overall, this issue will never be fixed due to the intrinsic difference between the fast_gen channels and the t-processer. However, when using the interpolated channel this is not an issue since the clocks are matched. The padding was added to all experiments just in case, and is especially important when sweeping the lengths of pulses using the fast_gen channels.
+- The experiments all contain a ~0.01 us padding beteween all pulses and readout. This is due to the mismatch between the different clockcycles. Overall, this issue will never be fixed due to the intrinsic difference between the fast_gen channels and the t-processer. However, when using the interpolated channel this is not an issue since the clocks are matched. The padding was added to all experiments just in case, and is especially important when sweeping the lengths of pulses using the fast_gen channels. See some of the notes on the initial debugging of the timing issue here: https://docs.google.com/document/d/1zO8RYeGaoUDeHsyMPsbU7aJ5nfcNtKS935lx8YlTgvM/edit?usp=sharing
 - The *qubit_char_funcs.py* file needs to be updated and utilized when wanting to create scans of parameters in more complicated experiments.
 - The current experiments using the HDAWG are hardcoded. This instrument needs to be integrated into the configuration files somehow.
+- The HDAWG setup is also a work in progress right now. The main focus is inputting custom pulses as a table in the ZI python API.
+- The external trigger to the HDAWG has an impedance mismatch issue whcih is described here: https://discord.com/channels/764231928676089909/1336515288770023466/1336518711347122277 and https://github.com/openquantumhardware/qick/issues/159
+  - Currently it is setup with a 50 OHm terminator in series and this seems to work ok to stabilize the signal, however the amplitude is not 3.3V. No issue with triggering has been seen yet with the current setup.
 
 ---
 
