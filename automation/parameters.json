@@ -1,0 +1,8 @@
+{
+  "exp_init": {
+    "instructions": {
+      "experiment": "system_config.json",
+      "data": []
+    }
+  }
+}
