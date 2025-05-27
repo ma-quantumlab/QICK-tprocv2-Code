@@ -36,6 +36,7 @@ NUM_QUBITS = system_config['num_qubits']
 QUBIT_INDEX = system_config['qubit_index']
 MUX = system_config['MUX']
 SS = system_config['SS']
+FULL_AUTO = system_config['full_auto']
 
 hw_cfg = system_config['hw_cfg']
 readout_cfg = system_config['readout_cfg']

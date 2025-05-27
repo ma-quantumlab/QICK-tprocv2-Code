@@ -525,7 +525,7 @@ print('flux actual =', pt)
 print('\n\n')
 
 # drive_DACs(pt)
-# drive_Yoko_and_DACs(pt)
+drive_Yoko_and_DACs(pt)
 # drive_Yoko_and_DACs([0]*9) # zero all the dacs
 
 all_qubit_freqs = []

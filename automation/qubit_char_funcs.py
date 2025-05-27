@@ -82,7 +82,7 @@ class PulseProbeSpectroscopyProgram(AveragerProgramV2):
         declare_gen_ch(self, cfg, cfg['qubit_ch'], usage='qubit', suffix='_ge')
         # initialize qubit pulse
         declare_pulse(self, cfg, cfg['qubit_ch'], usage='qubit', 
-                      pulse_style='const', pulse_name='qubit_pulse', suffix='_ge')
+                      pulse_style='gauss', pulse_name='qubit_pulse', suffix='_ge')
 
     def _body(self, cfg):
         self.pulse(ch=self.cfg["qubit_ch"], name="qubit_pulse", t=0)  #play probe pulse
